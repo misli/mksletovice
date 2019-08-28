@@ -1,0 +1,125 @@
+{% load i18n cache cms_tags menu_tags leprikon_tags rocketchat sekizai_tags staticfiles ganalytics %}
+<!DOCTYPE html>
+<html lang="cs" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="https://www.mks-letovice.cz/sites/default/files/mksfav.ico" type="image/vnd.microsoft.icon" />
+<meta name="keywords" content="mks, tic, knihovna, Letovice, kultura, turistika" />
+<meta name="robots" content="follow, index" />
+<meta name="generator" content="Leprikón (https://leprikokn.cz/)" />
+  <title>{% block title %}{% endblock %} {% include 'leprikon/title.txt' %}</title>
+  <link type="text/css" rel="stylesheet" href="https://www.mks-letovice.cz/sites/default/files/css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4.css" media="all" />
+  {% cache 300 stylesheet %}{% upstream 'https://www.mks-letovice.cz/mks/kontakty' '//link[@rel="stylesheet"]' %}{% endcache %}
+  <!-- HTML5 element support for IE6-8 -->
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  {% cache 300 javascripts %}{% upstream 'https://www.mks-letovice.cz/mks/kontakty' '//head/script' %}{% endcache %}
+  <script type="text/javascript">var $ = jQuery;</script>
+  {% render_block "css" %}
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-6 node-type-kontakt i18n-cs mks kontakty not-main-section" >
+{% cms_toolbar %}
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Přejít k hlavnímu obsahu</a>
+  </div>
+    <header id="navbar" role="banner" class="navbar container navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <nav class="site-menu strong">
+        <ul>
+          <li class="uppercase"><a class="mks" href="/mks">mks</a></li>
+          <li class="uppercase"><a class="knihovna" href="/knihovna">knihovna</a></li>
+          <li class="uppercase"><a class="tic" href="/tic">tic</a></li>
+          <li class="uppercase"><a class="historie" href="/historie">muzeum</a></li>
+        </ul>
+      </nav>
+      <a class="logo-and-title" href="/mks">
+                <img class="logo-image mks" alt="MKS logo" src="/sites/all/themes/mksletovice/img/logo/mkslogo_radova.png">
+        <div class="site-title uppercase strong">
+                            Městské</br>
+          kulturní středisko</br>
+          Letovice
+                          </div>
+              </a>
+                    <img class="header-section-image" class="Fotka hlavičky" src="/sites/all/themes/mksletovice/img/obr_mks.png">
+        {% school_year_form %}
+                  <form class="form-search content-search" action="/mks/kontakty" method="post" id="search-block-form" accept-charset="UTF-8"><div><div>
+      <h2 class="element-invisible">Vyhledávání</h2>
+    <div class="input-group"><input title="Zadejte hledaný termín." placeholder="Hledat" class="form-control form-text" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" /><span class="input-group-btn"><button type="submit" class="btn btn-primary"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>
+</button></span></div><div class="form-actions form-wrapper form-group" id="edit-actions"><button class="element-invisible btn btn-primary form-submit" type="submit" id="edit-submit" name="op" value="Hledat">Hledat</button>
+</div><input type="hidden" name="form_build_id" value="form-LKf6beYUKfhHDp9vzVtFLBRrAIc7OoR94BlBEwczBt4" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>      <div class="form-search mobile">
+        <a href="/search" class="btn"></a>
+      </div>
+
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    {% cache 300 navbar %}{% upstream 'https://www.mks-letovice.cz/' '//div[@class="navbar-collapse collapse"]' %}{% endcache %}
+      </div>
+</header>
+
+<nav role="breadcrumbs" class="navbar container breadcrumbs-area">
+  <ol class="breadcrumb"><li><a href="/">Domů</a></li>
+<li><span class="mks-aktualita nolink">MKS</span></li>
+<li class="active">Kontakty</li>
+</ol></nav>
+
+<div class="main-container container">
+
+  
+  <div class="row">
+          <aside class="col-sm-3" role="complementary">
+          <div class="region region-sidebar-first">
+    <section id="block-menu-block-3" class="block block-menu-block  block-menu-block-3 clearfix">
+
+      
+  <div class="menu-block-wrapper menu-block-3 menu-name-menu-main-menu-mks parent-mlid-0 menu-level-2">
+  {% show_menu_below_id 'leprikon' 0 100 0 1 'menu.html' %}
+</div>
+
+</section>
+<section id="block-block-1" class="block block-block  block-block-1 clearfix">
+
+      
+  <a href="/historie"><img src="/sites/default/files/banner-muzeum-186x305.jpg" alt="Banner muzeua historie"></a>
+</section>
+  </div>
+      </aside>  <!-- /#sidebar-first -->
+    
+    <section class="col-sm-9">
+      
+      <a id="main-content"></a>
+                                                                <div class="region region-content">
+    <section id="block-system-main" class="block block-system  block-system-main clearfix">
+    {% block content %}{% endblock %}
+    </section>
+  </div>
+</section>
+  </div>
+</div>
+
+{% cache 300 footer %}{% upstream 'https://www.mks-letovice.cz/' '//footer' %}{% endcache %}
+<div class="om-footer container-fluid">
+  <div class="container">
+    webdesign <a href="https://www.webkafe.cz" target="_blank">webkafe.cz</a>
+  </div>
+</div>
+  <script src="https://www.mks-letovice.cz/sites/default/files/js/js_spv25N83XarmOn5N-3w3qimOuKmzKLZY_jZ-7gQPNTw.js"></script>
+<script>function euCookieComplianceLoadScripts() {}</script>
+<script>var eu_cookie_compliance_cookie_name = "";</script>
+<script src="https://www.mks-letovice.cz/sites/default/files/js/js_ci8ibsgWOk2Q6kvtVZDVaFj_-AduR-gdYQZBi7z0Tyc.js"></script>
+<script src="https://www.mks-letovice.cz/sites/default/files/js/js_IVrKLEyiS-vAjs8fGdfJrJISYc63w_pxH6xmxKNvYoI.js"></script>
+{% render_block "js" %}
+</body>
+</html>

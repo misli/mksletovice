@@ -1,0 +1,14 @@
+{% load menu_tags %}
+
+<ul class="menu nav">
+{% for child in children %}
+  <li class="{% if forloop.first %}first {% elif forloop.last %}last {% endif %}leaf{% if child.selected %} active{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
+    <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}"{% if child.selected %} class="active-trail active"{% endif %}>{{ child.get_menu_title }}</a>
+    {% if child.children %}
+    <div style="padding-left: 15px;">
+        {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
+    </div>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,58 @@
+version: '3.4'
+services:
+
+  leprikon:
+    image: misli/mksletovice
+    build: .
+    depends_on:
+      - memcached
+      - mysql
+      - smtp
+    environment:
+      SECRET_KEY: secretkey
+      DATABASE_ENGINE: django.db.backends.mysql
+      DATABASE_HOST: ''
+      DATABASE_NAME: mksletovice
+      DATABASE_PASSWORD: dbpassword
+      DATABASE_USER: mksletovice
+      EMAIL_HOST: smtp
+      EMAIL_HOST_PASSWORD: emailpassword
+      EMAIL_HOST_USER: mksletovice
+      # EMAIL_SUBJECT_PREFIX: '[IS MKS]'
+      MEMCACHED_KEY_PREFIX: mksletovice
+      MEMCACHED_LOCATION: memcached:11211
+      SERVER_EMAIL: '"IS MKS Letovice" <noreply@mks-letovice.leprikon.cz>'
+    ports:
+      - 127.0.0.1:10080:80
+    volumes:
+      - ./.ipython:/root/.ipython
+      - ./data:/app/data
+      - ./media:/app/htdocs/media
+      - mysql:/var/run/mysqld
+
+  memcached:
+    image: memcached
+
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: mksletovice
+      MYSQL_PASSWORD: dbpassword
+      MYSQL_ROOT_PASSWORD: rootdbpassword
+      MYSQL_USER: mksletovice
+    volumes:
+      - mysql:/var/run/mysqld
+      - ./mysql:/var/lib/mysql
+
+  smtp:
+    image: catatnight/postfix
+    environment:
+      maildomain: mksletovice.cz
+      smtp_user: mksletovice:emailpassword
+    stdin_open: true
+    volumes:
+    - ./dkim:/etc/opendkim/domainkeys
+    tty: true
+
+volumes:
+  mysql:
