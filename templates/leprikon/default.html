@@ -9,8 +9,8 @@
 <meta name="robots" content="follow, index" />
 <meta name="generator" content="Leprikón (https://leprikokn.cz/)" />
   <title>{% block title %}{% endblock %} {% include 'leprikon/title.txt' %}</title>
-  <link type="text/css" rel="stylesheet" href="https://www.mks-letovice.cz/sites/default/files/css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4.css" media="all" />
   {% cache 300 stylesheet %}{% upstream 'https://www.mks-letovice.cz/mks/kontakty' '//link[@rel="stylesheet"]' %}{% endcache %}
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'leprikon/css/layout.css' %}"/>
   <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -24,56 +24,21 @@
   <div id="skip-link">
     <a href="#main-content" class="element-invisible element-focusable">Přejít k hlavnímu obsahu</a>
   </div>
-    <header id="navbar" role="banner" class="navbar container navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <nav class="site-menu strong">
-        <ul>
-          <li class="uppercase"><a class="mks" href="/mks">mks</a></li>
-          <li class="uppercase"><a class="knihovna" href="/knihovna">knihovna</a></li>
-          <li class="uppercase"><a class="tic" href="/tic">tic</a></li>
-          <li class="uppercase"><a class="historie" href="/historie">muzeum</a></li>
-        </ul>
-      </nav>
-      <a class="logo-and-title" href="/mks">
-                <img class="logo-image mks" alt="MKS logo" src="/sites/all/themes/mksletovice/img/logo/mkslogo_radova.png">
-        <div class="site-title uppercase strong">
-                            Městské</br>
-          kulturní středisko</br>
-          Letovice
-                          </div>
-              </a>
-                    <img class="header-section-image" class="Fotka hlavičky" src="/sites/all/themes/mksletovice/img/obr_mks.png">
-        {% school_year_form %}
-                  <form class="form-search content-search" action="/mks/kontakty" method="post" id="search-block-form" accept-charset="UTF-8"><div><div>
-      <h2 class="element-invisible">Vyhledávání</h2>
-    <div class="input-group"><input title="Zadejte hledaný termín." placeholder="Hledat" class="form-control form-text" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" /><span class="input-group-btn"><button type="submit" class="btn btn-primary"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>
-</button></span></div><div class="form-actions form-wrapper form-group" id="edit-actions"><button class="element-invisible btn btn-primary form-submit" type="submit" id="edit-submit" name="op" value="Hledat">Hledat</button>
-</div><input type="hidden" name="form_build_id" value="form-LKf6beYUKfhHDp9vzVtFLBRrAIc7OoR94BlBEwczBt4" />
-<input type="hidden" name="form_id" value="search_block_form" />
-</div>
-</div></form>      <div class="form-search mobile">
-        <a href="/search" class="btn"></a>
-      </div>
 
-      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-
-    {% cache 300 navbar %}{% upstream 'https://www.mks-letovice.cz/' '//div[@class="navbar-collapse collapse"]' %}{% endcache %}
-      </div>
-</header>
+{% cache 300 header %}{% upstream 'https://www.mks-letovice.cz/' '//header' '/ active-trail / /' '|</br>|<br/>|' %}{% endcache %}
 
 <nav role="breadcrumbs" class="navbar container breadcrumbs-area">
-  <ol class="breadcrumb"><li><a href="/">Domů</a></li>
-<li><span class="mks-aktualita nolink">MKS</span></li>
-<li class="active">Kontakty</li>
-</ol></nav>
+    <div style="float: right; padding: 8px;">
+        {% school_year_form %}
+    </div>
+    <div style="float: right; padding: 8px;">
+        {% include 'leprikon/user_dropdown.html' %}
+    </div>
+
+    <ol class="breadcrumb">
+        {% show_breadcrumb 0 'breadcrumb.html' %}
+    </ol>
+</nav>
 
 <div class="main-container container">
 
@@ -86,6 +51,7 @@
       
   <div class="menu-block-wrapper menu-block-3 menu-name-menu-main-menu-mks parent-mlid-0 menu-level-2">
   {% show_menu_below_id 'leprikon' 0 100 0 1 'menu.html' %}
+  {#% show_menu 0 100 0 100 'menu.html' 'CMSMenu,LeprikonMenu' %#}
 </div>
 
 </section>
@@ -109,7 +75,10 @@
   </div>
 </div>
 
-{% cache 300 footer %}{% upstream 'https://www.mks-letovice.cz/' '//footer' %}{% endcache %}
+{% cache 300 footer %}{% upstream 'https://www.mks-letovice.cz/' '//footer' '|</br>|<br/>|' %}{% endcache %}
+<div class="google-map-wrapper">
+  <iframe class="google-map" src="https://mapsengine.google.com/map/embed?mid=zHOBDIhxrAIw.kAWPeb3lGvPs" width="100%" height="480" frameBorder="0" style="display:block;"></iframe>
+</div>
 <div class="om-footer container-fluid">
   <div class="container">
     webdesign <a href="https://www.webkafe.cz" target="_blank">webkafe.cz</a>
