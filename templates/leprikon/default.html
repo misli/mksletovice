@@ -9,8 +9,11 @@
 <meta name="robots" content="follow, index" />
 <meta name="generator" content="Leprikón (https://leprikokn.cz/)" />
   <title>{% block title %}{% endblock %} {% include 'leprikon/title.txt' %}</title>
-  {% cache 300 stylesheet %}{% upstream 'https://www.mks-letovice.cz/mks/kontakty' '//link[@rel="stylesheet"]' %}{% endcache %}
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'leprikon/lib/bootstrap/css/bootstrap.min.css' %}"/>
   <link rel="stylesheet" type="text/css" media="all" href="{% static 'leprikon/css/layout.css' %}"/>
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'leprikon/css/chat.css' %}"/>
+  {% cache 300 stylesheet %}{% upstream 'https://www.mks-letovice.cz/mks/kontakty' '//link[@rel="stylesheet"]' %}{% endcache %}
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'mks/style.css' %}"/>
   <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,6 +33,9 @@
 <nav role="breadcrumbs" class="navbar container breadcrumbs-area">
     <div style="float: right; padding: 8px;">
         {% school_year_form %}
+    </div>
+    <div style="float: right; padding: 8px;">
+        {% chat %}
     </div>
     <div style="float: right; padding: 8px;">
         {% include 'leprikon/user_dropdown.html' %}
@@ -90,5 +96,6 @@
 <script src="https://www.mks-letovice.cz/sites/default/files/js/js_ci8ibsgWOk2Q6kvtVZDVaFj_-AduR-gdYQZBi7z0Tyc.js"></script>
 <script src="https://www.mks-letovice.cz/sites/default/files/js/js_IVrKLEyiS-vAjs8fGdfJrJISYc63w_pxH6xmxKNvYoI.js"></script>
 {% render_block "js" %}
+{% livechat %}
 </body>
 </html>

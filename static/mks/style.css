@@ -1,0 +1,10 @@
+.form-horizontal .form-group label.form-control,
+.form-horizontal .form-group.checkbox label {
+    text-align: left;
+    width: 100%;
+}
+
+#chat-modal .box-header {
+    background: #fff;
+    text-align: center;
+}
